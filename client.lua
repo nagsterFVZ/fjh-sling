@@ -4,7 +4,7 @@ local sling = "Back"
 
 Citizen.CreateThread(function()
   while true do
-      local me = GetPlayerPed(-1)
+      local me = PlayerPedId()
       local items = QBCore.Functions.GetPlayerData().items
       hotbar = { items[1], items[2], items[3], items[4], items[5], items[41] }
       for slot, item in pairs(hotbar) do
@@ -39,7 +39,7 @@ function inHotbar(hash)
 end
 
 function AttachWeapon(attachModel,modelHash,boneNumber,x,y,z,xR,yR,zR)
-	local bone = GetPedBoneIndex(GetPlayerPed(-1), boneNumber)
+	local bone = GetPedBoneIndex(PlayerPedId(), boneNumber)
 	RequestModel(attachModel)
 	while not HasModelLoaded(attachModel) do
 		Wait(100)
@@ -50,7 +50,7 @@ function AttachWeapon(attachModel,modelHash,boneNumber,x,y,z,xR,yR,zR)
     handle = CreateObject(GetHashKey(attachModel), 1.0, 1.0, 1.0, true, true, false)
   }
 
-	AttachEntityToEntity(attached_weapons[attachModel].handle, GetPlayerPed(-1), bone, x, y, z, xR, yR, zR, 1, 1, 0, 0, 2, 1)
+	AttachEntityToEntity(attached_weapons[attachModel].handle, PlayerPedId(), bone, x, y, z, xR, yR, zR, 1, 1, 0, 0, 2, 1)
 end
 
 RegisterNetEvent('mg-weapon-sling:client:changeSling')
