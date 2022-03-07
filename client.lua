@@ -1,3 +1,4 @@
+local QBCore = exports['qb-core']:GetCoreObject()
 local attached_weapons = {}
 local hotbar = {}
 local sling = "Back"
